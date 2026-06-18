@@ -1,0 +1,16 @@
+# Secrets non chiffrés
+*.key
+*.pem
+age.key
+secrets/plain/
+
+# Kube
+kubeconfig
+.kube/
+
+# OS
+.DS_Store
+
+# Helm
+charts/*/charts/
+charts/*/Chart.lock

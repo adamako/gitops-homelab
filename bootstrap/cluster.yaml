@@ -1,0 +1,28 @@
+# bootstrap/cluster.yaml
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: homelab
+servers: 1
+agents: 2
+kubeAPI:
+  hostIP: "0.0.0.0"
+  hostPort: "6443"
+ports:
+  - port: 9080:80
+    nodeFilters:
+      - loadbalancer
+  - port: 9443:443
+    nodeFilters:
+      - loadbalancer
+options:
+  k3d:
+    wait: true
+  k3s:
+    extraArgs:
+      - arg: --disable=traefik
+        nodeFilters:
+          - server:*
+  kubeconfig:
+    updateDefaultKubeconfig: true
+    switchCurrentContext: true
