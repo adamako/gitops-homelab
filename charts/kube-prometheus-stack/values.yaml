@@ -1,0 +1,25 @@
+grafana:
+  enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - grafana.127.0.0.1.nip.io
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    resources:
+      requests:
+        memory: 512Mi
+      limits:
+        memory: 1Gi
+
+alertmanager:
+  enabled: false  # on active plus tard
+
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true
